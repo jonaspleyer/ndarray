@@ -2363,6 +2363,27 @@ where
         self.strides.slice_mut().swap(ax, bx);
     }
 
+    /// Return a view with swapped axes
+    ///
+    /// See also [Self::t] and [Self::reversed_axes].
+    ///
+    /// ```
+    /// # use ndarray::*;
+    /// let a = array![
+    ///     [[ 0, 1, 1, 1],[ 2, 3, 3, 3],[ 4, 5, 5, 5]],
+    ///     [[10,11,11,11],[12,13,13,13],[14,15,15,15]],
+    /// ];
+    /// assert_eq!(a.dim(), (2,3,4));
+    /// assert_eq!(a.swap_axes_view(0, 1).dim(), (3, 2, 4));
+    /// ```
+    pub fn swap_axes_view(&self, ax: usize, bx: usize) -> ArrayView<'_, A, D>
+    where S: Data
+    {
+        let mut view = self.view();
+        view.swap_axes(ax, bx);
+        view
+    }
+
     /// Permute the axes.
     ///
     /// This does not move any data, it just adjusts the array’s dimensions
