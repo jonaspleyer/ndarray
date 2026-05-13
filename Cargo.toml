@@ -93,6 +93,9 @@ default-members = [
     # exclude blas-tests and blas-mock-tests that activate "blas" feature
 ]
 
+[patch.crates-io]
+approx = { git = "https://github.com/kitt159/approx/", branch="relative_eq-small-values-fix" }
+
 [workspace.dependencies]
 ndarray = { version = "0.17", path = ".", default-features = false }
 ndarray-rand = { path = "ndarray-rand" }
@@ -101,7 +104,7 @@ ndarray-gen = { path = "crates/ndarray-gen" }
 num-integer = { version = "0.1.39", default-features = false }
 num-traits = { version = "0.2", default-features = false }
 num-complex = { version = "0.4", default-features = false }
-approx = { version = "0.5", default-features = false }
+approx = { version = "0.6.0-rc2", default-features = false }
 quickcheck = { version = "1.0", default-features = false }
 rand = { version = "0.9.0", features = ["small_rng"] }
 rand_distr = { version = "0.5.0" }

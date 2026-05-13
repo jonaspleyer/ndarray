@@ -85,6 +85,10 @@ macro_rules! impl_approx_traits {
                 A::Epsilon: Clone,
                 D: Dimension,
             {
+                fn default_relative_epsilon() -> A::Epsilon {
+                    A::default_relative_epsilon()
+                }
+
                 fn default_max_relative() -> A::Epsilon {
                     A::default_max_relative()
                 }
@@ -114,6 +118,10 @@ macro_rules! impl_approx_traits {
                 S2: Data<Elem = B>,
                 D: Dimension,
             {
+                fn default_relative_epsilon() -> A::Epsilon {
+                    A::default_relative_epsilon()
+                }
+
                 fn default_max_relative() -> A::Epsilon {
                     A::default_max_relative()
                 }
