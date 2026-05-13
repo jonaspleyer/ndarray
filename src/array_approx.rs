@@ -216,9 +216,9 @@ macro_rules! impl_approx_traits {
                 fn relative_eq() {
                     let a: Array2<f32> = array![[1., 2.], [-0.000010001, 100000000.]];
                     let mut b: Array2<f32> = array![[1., 1.], [-0.000010002, 100000001.]];
-                    assert_relative_ne!(a, b);
+                    assert_relative_ne!(a, b, epsilon = 1e-9);
                     b[(0, 1)] = 2.;
-                    assert_relative_eq!(a, b);
+                    assert_relative_eq!(a, b, epsilon = 1e-9);
 
                     // Check epsilon.
                     assert_relative_eq!(array![0.0f32], array![1e-40f32], epsilon = 1e-40f32);
